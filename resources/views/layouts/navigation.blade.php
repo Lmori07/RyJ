@@ -16,6 +16,38 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.menu')" :active="request()->routeIs('dashboard.menu')">
+                        {{ __('Menu') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.reservacion')" :active="request()->routeIs('dashboard.reservacion')">
+                        {{ __('Reservacion') }}
+                    </x-nav-link>
+                </div>
+                @if(Auth::user()->hasRole('admin'))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.administrarusuario')" :active="request()->routeIs('dashboard.administrarusuario')">
+                        {{ __('Administrar Usuario') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.administrarproducto')" :active="request()->routeIs('dashboard.administrarproducto')">
+                        {{ __('Administrar Producto') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.administrarfactura')" :active="request()->routeIs('dashboard.administrarfactura')">
+                        {{ __('Administrar Factura') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('dashboard.administrarreservacion')" :active="request()->routeIs('dashboard.administrarreservacion')">
+                        {{ __('Administrar Reservacion') }}
+                    </x-nav-link>
+                </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
