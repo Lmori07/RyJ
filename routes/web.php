@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth']], function()
 //Route::group(['middleware' => ['auth', 'role:user']], function()
 Route::group(['middleware' => ['auth']], function()
 {
-  Route::get('/dashboard/administrarusuario', 'App\Http\Controllers\DashboardController@administrarusuario')->name('dashboard.administrarusuario');  
+  Route::get('/dashboard/administrarusuario', 'App\Http\Controllers\UserController@administrarusuario')->name('dashboard.administrarusuario');  
 });
 
 //Ruta para todo los usuarios administradores entren al menu de administrar producto en el dashboard
