@@ -20,6 +20,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -60,4 +61,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function roles()
+    {
+        //return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
 }

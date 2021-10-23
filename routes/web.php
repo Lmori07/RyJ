@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +46,13 @@ Route::group(['middleware' => ['auth']], function()
 //Route::group(['middleware' => ['auth', 'role:user']], function()
 Route::group(['middleware' => ['auth']], function()
 {
-  Route::get('/dashboard/administrarusuario', 'App\Http\Controllers\UserController@administrarusuario')->name('dashboard.administrarusuario');  
+  Route::get('/dashboard/administrarusuario', [UserController::class,'administrarusuario'])->name('dashboard.administrarusuario'); 
+  Route::get('cu', [UserController::class,'create']) -> name('cu');
+  Route::post('su', [UserController::class,'store']) -> name('su');
+  Route::delete('du/{id}', [UserController::class,'destroy']) -> name('du');
+  Route::get('su', [UserController::class,'show']) -> name('su');
+  Route::get('eu/{id}', [UserController::class,'edit']) -> name('eu');
+  Route::put('uu/{id}', [UserController::class,'update']) -> name('uu');
 });
 
 //Ruta para todo los usuarios administradores entren al menu de administrar producto en el dashboard
