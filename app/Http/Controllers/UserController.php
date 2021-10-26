@@ -87,9 +87,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $roles = Role::all();
+        //dd($roles->all());
+        $user = User::with('roles')->find($id);
+        //dd($user);
         //$user->roles()->sync($request->input('roles', []));
-        return view('eu', compact('user'));
+        return view('eu', compact('user','roles'));
         //return redirect()->route('eu')->with('success','User Add');
     }
 
@@ -102,9 +105,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request->all());
+        $role = Role::find($request->only('roles'))->first();
         $user = User::find($id);
         $user->update($request->only(['name','email']));
-        //dd($request->all());
+        $user->syncRoles([$role->id]);
         return redirect()->route('dashboard.administrarusuario')->with('success','User Edited');
     }
 
